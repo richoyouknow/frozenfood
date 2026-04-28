@@ -13,8 +13,8 @@ interface TravelCardProps extends React.HTMLAttributes<HTMLDivElement> {
   overview: string;
   price: string | number;
   pricePeriod: string;
-  onBookNow?: () => void;
-  onViewDetail?: () => void;
+  onBookNow?: (e?: React.MouseEvent) => void;
+  onViewDetail?: (e?: React.MouseEvent) => void;
 }
 
 const TravelCard = React.forwardRef<HTMLDivElement, TravelCardProps>(
@@ -59,7 +59,7 @@ const TravelCard = React.forwardRef<HTMLDivElement, TravelCardProps>(
         <div className="relative flex h-full flex-col justify-end p-4 sm:p-10 text-white">
           
           {/* Content Block (slides up on hover) */}
-          <div className="space-y-2 sm:space-y-6 transition-transform duration-500 ease-in-out group-hover:-translate-y-16 sm:group-hover:-translate-y-40">
+          <div className="space-y-2 sm:space-y-6 transition-transform duration-500 ease-in-out -translate-y-20 sm:translate-y-0 sm:group-hover:-translate-y-40">
             <div>
               <h3 className="text-lg sm:text-4xl md:text-5xl font-bold font-display leading-tight mb-0.5 sm:mb-2 drop-shadow-lg">{title}</h3>
               <p className="text-[10px] sm:text-base text-primary font-bold tracking-widest uppercase drop-shadow-md">{location}</p>
@@ -73,8 +73,8 @@ const TravelCard = React.forwardRef<HTMLDivElement, TravelCardProps>(
             </div>
           </div>
 
-          {/* Bottom Section: Price and Buttons (revealed on hover) */}
-          <div className="absolute -bottom-40 left-0 w-full p-4 sm:p-10 opacity-0 transition-all duration-500 ease-in-out group-hover:bottom-0 group-hover:opacity-100 bg-gradient-to-t from-black via-black/90 to-transparent">
+          {/* Bottom Section: Price and Buttons (revealed on hover for desktop, always visible/shifted for mobile) */}
+          <div className="absolute bottom-0 sm:-bottom-40 left-0 w-full p-4 sm:p-10 opacity-100 sm:opacity-0 transition-all duration-500 ease-in-out sm:group-hover:bottom-0 sm:group-hover:opacity-100 bg-gradient-to-t from-black via-black/90 to-transparent">
             <div className="flex flex-col gap-3 sm:gap-6 border-t border-white/20 pt-4 sm:pt-8">
               <div className="flex justify-between items-end">
                 <div>
@@ -87,14 +87,14 @@ const TravelCard = React.forwardRef<HTMLDivElement, TravelCardProps>(
               
               <div className="flex flex-col sm:grid sm:grid-cols-2 gap-2 sm:gap-4">
                 <Button 
-                  onClick={onViewDetail} 
+                  onClick={(e) => onViewDetail?.(e)} 
                   variant="outline"
                   className="bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 text-white rounded-full h-8 sm:h-14 font-bold text-[10px] sm:text-base transition-all duration-300"
                 >
                   Detail
                 </Button>
                 <Button 
-                  onClick={onBookNow} 
+                  onClick={(e) => onBookNow?.(e)} 
                   className="bg-primary hover:bg-blue-600 text-white rounded-full h-8 sm:h-14 font-bold text-[10px] sm:text-base transition-all duration-300 clean-shadow"
                 >
                   Pilih

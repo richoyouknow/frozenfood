@@ -26,8 +26,12 @@ export default function RootLayout({
     <html
       lang="id"
       className={`${outfit.variable} ${dmSans.variable} scroll-smooth antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-white text-slate-800 font-sans selection:bg-blue-100 selection:text-blue-900">
+      <body 
+        className="min-h-full flex flex-col bg-white text-slate-800 font-sans selection:bg-blue-100 selection:text-blue-900"
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>

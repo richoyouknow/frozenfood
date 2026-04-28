@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TravelCard } from "@/components/ui/card-7";
 import { X, CheckCircle2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function Packages({ onSelectPackage }: { onSelectPackage?: (id: string) => void }) {
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
@@ -141,9 +142,19 @@ export default function Packages({ onSelectPackage }: { onSelectPackage?: (id: s
                 overview={pkg.desc}
                 price={pkg.price}
                 pricePeriod={pkg.pricePeriod}
-                className={pkg.popular ? "border-primary/50 ring-4 ring-primary/10" : ""}
-                onBookNow={() => handleSelect(pkg.id)}
-                onViewDetail={() => setSelectedPackage(pkg)}
+                className={cn(
+                  "cursor-pointer",
+                  pkg.popular ? "border-primary/50 ring-4 ring-primary/10" : ""
+                )}
+                onBookNow={(e) => {
+                  e?.stopPropagation();
+                  handleSelect(pkg.id);
+                }}
+                onViewDetail={(e) => {
+                  e?.stopPropagation();
+                  setSelectedPackage(pkg);
+                }}
+                onClick={() => setSelectedPackage(pkg)}
               />
             </motion.div>
           ))}
