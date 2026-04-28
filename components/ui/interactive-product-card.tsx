@@ -57,7 +57,7 @@ export function InteractiveProductCard({
       onMouseLeave={handleMouseLeave}
       style={style}
       className={cn(
-        "relative w-full max-w-[340px] aspect-[9/12] rounded-[2.5rem] bg-card shadow-2xl overflow-hidden cursor-pointer",
+        "relative w-full max-w-[340px] aspect-[9/12] rounded-2xl sm:rounded-[2.5rem] bg-card shadow-2xl overflow-hidden cursor-pointer",
         "transform-style-3d", // Enables 3D transformations for children
         className
       )}
@@ -67,24 +67,24 @@ export function InteractiveProductCard({
       <img
         src={imageUrl}
         alt={title}
-        className="absolute inset-0 h-full w-full object-cover rounded-[2.5rem] transition-transform duration-500"
+        className="absolute inset-0 h-full w-full object-cover rounded-2xl sm:rounded-[2.5rem] transition-transform duration-500"
         style={{ transform: "translateZ(-20px) scale(1.1)" }}
       />
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent rounded-[2.5rem]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent rounded-2xl sm:rounded-[2.5rem]" />
 
       {/* Main Content with 3D effect */}
       <div
-        className="absolute inset-0 p-6 flex flex-col"
+        className="absolute inset-0 p-3 sm:p-6 flex flex-col"
         style={{ transform: "translateZ(40px)" }}
       >
         {/* Glassmorphism Header */}
-        <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur-xl">
+        <div className="flex items-center justify-between rounded-xl sm:rounded-2xl border border-white/10 bg-white/10 p-2 sm:p-4 backdrop-blur-xl">
           <div className="flex flex-col">
-            <h3 className="text-xl font-bold text-white drop-shadow-md">{title}</h3>
-            <p className="text-xs text-white/70 font-medium">{description}</p>
+            <h3 className="text-[10px] sm:text-xl font-bold text-white drop-shadow-md leading-tight">{title}</h3>
+            <p className="text-[7px] sm:text-xs text-white/70 font-medium leading-tight">{description}</p>
           </div>
-          <div className="h-10 w-10 flex items-center justify-center bg-white rounded-xl p-1.5 shadow-inner">
+          <div className="h-6 w-6 sm:h-10 sm:w-10 flex items-center justify-center bg-white rounded-lg sm:rounded-xl p-1 sm:p-1.5 shadow-inner flex-shrink-0">
              <img src={logoUrl} alt="Brand Logo" className="h-full w-auto object-contain" />
           </div>
         </div>

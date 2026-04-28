@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Snowflake, Utensils, Users, Truck, ShoppingBag, Rocket, CheckCircle2 } from "lucide-react";
+import { Snowflake, Utensils, Users, Truck, ShoppingBag, Rocket } from "lucide-react";
 
 export default function Support() {
   const facilities = [
@@ -13,69 +13,89 @@ export default function Support() {
     { icon: <Rocket className="w-5 h-5" />, text: "Siap jualan, untung maksimal" }
   ];
 
-  const benefits = [
-    "Produk berkualitas",
-    "Pengiriman seluruh Indonesia",
-    "Support marketing & promosi",
-    "Packing aman & higienis",
-    "Sistem mudah & praktis",
-    "Bimbingan untuk mitra"
-  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
 
   return (
-    <section className="py-24 bg-slate-50">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-2 gap-16">
-          
-          {/* Facilities Section */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-sm font-bold text-primary tracking-widest uppercase mb-6">Fasilitas & Dukungan</h2>
-            <h3 className="text-3xl font-display font-medium text-navy mb-8">Segala yang Anda Butuhkan untuk Sukses</h3>
-            <div className="grid gap-4">
-              {facilities.map((item, index) => (
-                <div key={index} className="flex items-center gap-4 p-4 bg-white rounded-2xl clean-shadow border border-slate-50">
-                  <div className="w-10 h-10 bg-primary-light text-primary flex items-center justify-center rounded-lg">
-                    {item.icon}
-                  </div>
-                  <span className="text-navy font-medium text-sm">{item.text}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+    <section className="py-24 bg-slate-50 relative overflow-hidden">
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+      </div>
 
-          {/* All You Get Section */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-navy text-white p-10 md:p-12 rounded-[3rem] relative overflow-hidden"
+            className="text-sm font-bold text-primary tracking-widest uppercase mb-4"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary blur-[100px] opacity-20 -translate-y-1/2 translate-x-1/2"></div>
-            
-            <h2 className="text-sm font-bold text-primary tracking-widest uppercase mb-6">Semua yang Anda Dapatkan</h2>
-            <h3 className="text-3xl font-display font-medium mb-10 text-white">Investasi Masa Depan yang Menjanjikan</h3>
-            
-            <div className="grid gap-6">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center gap-4">
-                  <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 className="w-4 h-4 text-white" />
-                  </div>
-                  <span className="text-slate-300 font-light">{benefit}</span>
-                </div>
-              ))}
-            </div>
-            
-            <div className="mt-12 pt-12 border-t border-white/10 italic text-slate-400 font-light">
-              "Tanpa ribet produksi, tanpa pengalaman pun bisa langsung mulai!"
-            </div>
-          </motion.div>
-
+            Fasilitas & Dukungan
+          </motion.h2>
+          <motion.h3 
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl font-display font-medium text-navy leading-tight"
+          >
+            Segala yang Anda Butuhkan untuk Sukses Bersama Kami
+          </motion.h3>
         </div>
+
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {facilities.map((item, index) => (
+            <motion.div 
+              key={index} 
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+              className="group p-8 bg-white rounded-3xl clean-shadow border border-slate-100 transition-all duration-300 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5"
+            >
+              <div className="w-14 h-14 bg-primary/10 text-primary flex items-center justify-center rounded-2xl mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                {item.icon}
+              </div>
+              <h4 className="text-navy font-semibold text-lg mb-2">
+                {item.text.split(' & ')[0]}
+              </h4>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                {item.text}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="mt-16 text-center"
+        >
+          <p className="italic text-slate-400 font-light max-w-2xl mx-auto">
+            "Tanpa ribet produksi, tanpa pengalaman pun bisa langsung mulai! Kami siap membimbing Anda hingga meraih keuntungan maksimal."
+          </p>
+        </motion.div>
       </div>
     </section>
   );

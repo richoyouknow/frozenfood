@@ -86,8 +86,8 @@ export default function Brands() {
           </motion.p>
         </div>
 
-        {/* Responsive Grid of Interactive Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        {/* Responsive Flexbox of Interactive Cards - used flex to allow centering of last row */}
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-10">
           {products.map((product, index) => (
             <motion.div
               key={index}
@@ -95,7 +95,7 @@ export default function Brands() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="flex justify-center"
+              className="w-[31%] sm:w-[48%] lg:w-[23%] flex justify-center"
             >
               <InteractiveProductCard
                 title={product.name}
