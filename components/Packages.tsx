@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TravelCard } from "@/components/ui/card-7";
 import { X, CheckCircle2 } from "lucide-react";
 
-export default function Packages() {
+export default function Packages({ onSelectPackage }: { onSelectPackage?: (id: string) => void }) {
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
 
   const packages = [
     {
-      id: "promo",
+      id: "paket1",
       name: "Paket Promo",
       title: "Investasi Terjangkau",
       stock: "135 Pack",
@@ -29,7 +29,7 @@ export default function Packages() {
       ]
     },
     {
-      id: "usaha",
+      id: "paket2",
       name: "Paket Usaha",
       title: "Kapasitas Menengah",
       stock: "250 Pack",
@@ -49,7 +49,7 @@ export default function Packages() {
       ]
     },
     {
-      id: "bisnis",
+      id: "paket3",
       name: "Paket Bisnis",
       title: "Skala Profesional",
       stock: "700 Pack",
@@ -69,7 +69,7 @@ export default function Packages() {
       ]
     },
     {
-      id: "distributor",
+      id: "paket4",
       name: "Paket Distributor",
       title: "Skala Minimarket",
       stock: "Kapasitas Maksimal",
@@ -90,6 +90,15 @@ export default function Packages() {
       ]
     }
   ];
+
+  const handleSelect = (id: string) => {
+    if (onSelectPackage) {
+      onSelectPackage(id);
+    }
+    setSelectedPackage(null);
+    const element = document.getElementById("daftar");
+    element?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section id="paket" className="py-32 bg-white relative">
@@ -115,7 +124,7 @@ export default function Packages() {
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-10 max-w-6xl mx-auto">
           {packages.map((pkg, index) => (
             <motion.div
               key={index}
@@ -133,11 +142,7 @@ export default function Packages() {
                 price={pkg.price}
                 pricePeriod={pkg.pricePeriod}
                 className={pkg.popular ? "border-primary/50 ring-4 ring-primary/10" : ""}
-                onBookNow={() => {
-                  window.dispatchEvent(new CustomEvent("packageSelected", { detail: pkg.id }));
-                  const element = document.getElementById("daftar");
-                  element?.scrollIntoView({ behavior: "smooth" });
-                }}
+                onBookNow={() => handleSelect(pkg.id)}
                 onViewDetail={() => setSelectedPackage(pkg)}
               />
             </motion.div>
@@ -163,11 +168,11 @@ export default function Packages() {
               className="relative bg-white w-full max-w-5xl max-h-[90vh] overflow-hidden rounded-[3rem] shadow-2xl flex flex-col md:flex-row"
             >
               {/* Image Section */}
-              <div className="w-full md:w-1/2 h-[300px] md:h-auto bg-slate-100 overflow-hidden">
+              <div className="w-full md:w-1/2 h-[400px] md:h-auto bg-slate-900 overflow-hidden flex items-center justify-center p-4">
                 <img 
                   src={selectedPackage.imageUrl} 
                   alt={selectedPackage.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
 
@@ -211,12 +216,7 @@ export default function Packages() {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button 
-                    onClick={() => {
-                      window.dispatchEvent(new CustomEvent("packageSelected", { detail: selectedPackage.id }));
-                      setSelectedPackage(null);
-                      const element = document.getElementById("daftar");
-                      element?.scrollIntoView({ behavior: "smooth" });
-                    }}
+                    onClick={() => handleSelect(selectedPackage.id)}
                     className="flex-1 bg-primary hover:bg-blue-600 text-white font-bold py-4 rounded-2xl transition-all clean-shadow"
                   >
                     Daftar Sekarang
