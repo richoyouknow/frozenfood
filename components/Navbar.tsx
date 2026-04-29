@@ -35,11 +35,13 @@ export default function Navbar() {
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
         
         <Link href="#" className="flex items-center gap-3 group">
-          <img 
-            src="/logo/IMG_8448.PNG" 
-            alt="Indo Frozen Food Logo" 
-            className="h-12 w-auto group-hover:scale-105 transition-transform duration-500"
-          />
+          <div className="h-12 w-12 overflow-hidden rounded-xl flex items-center justify-center bg-white shadow-sm border border-slate-100 group-hover:border-primary/20 transition-colors duration-500">
+            <img 
+              src="/logo/IMG_8448.PNG" 
+              alt="Indo Frozen Food Logo" 
+              className="h-full w-full object-cover scale-110 transition-transform duration-500 group-hover:scale-125"
+            />
+          </div>
           <span className="text-xl font-medium font-display tracking-tight text-navy hidden sm:block">
             Indo<span className="text-primary font-bold">FrozenFood</span>
           </span>
