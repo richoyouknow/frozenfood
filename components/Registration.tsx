@@ -16,13 +16,13 @@ export default function Registration({
     listrik: "",
     nomorHp: "",
     alamat: "",
-    bank: ""
+    pembayaran: ""
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const { namaToko, listrik, nomorHp, alamat, bank } = formData;
+    const { namaToko, listrik, nomorHp, alamat, pembayaran } = formData;
     
     // Mapping paket value to label
     const packageLabels: Record<string, string> = {
@@ -42,7 +42,7 @@ export default function Registration({
 - *Nomor HP:* ${nomorHp || '-'}
 - *Alamat Lengkap:* ${alamat || '-'}
 - *Pilihan Paket:* ${selectedPackageLabel}
-- *Metode Pembayaran:* ${bank.toUpperCase() || '-'}
+- *Metode Pembayaran:* ${pembayaran.toUpperCase() || '-'}
 
 Mohon dibantu proses selanjutnya. Terima kasih.`;
 
@@ -185,21 +185,32 @@ Mohon dibantu proses selanjutnya. Terima kasih.`;
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-bold text-navy tracking-wide uppercase">Metode Pembayaran (Bank)</label>
+                <label className="text-xs font-bold text-navy tracking-wide uppercase">Metode Pembayaran</label>
                 <div className="relative">
                   <select 
-                    name="bank"
-                    value={formData.bank}
+                    name="pembayaran"
+                    value={formData.pembayaran}
                     onChange={handleInputChange}
                     required
                     className="w-full bg-slate-50 border border-slate-100 px-5 py-4 rounded-2xl text-navy focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none transition-all font-light appearance-none"
                   >
-                    <option value="" disabled>Pilih Bank...</option>
-                    <option value="bca">BCA</option>
-                    <option value="mandiri">Mandiri</option>
-                    <option value="bni">BNI</option>
-                    <option value="bri">BRI</option>
-                    <option value="bsi">BSI</option>
+                    <option value="" disabled>Pilih Metode Pembayaran...</option>
+                    <optgroup label="Transfer Bank">
+                      <option value="bca">BCA</option>
+                      <option value="mandiri">Mandiri</option>
+                      <option value="bni">BNI</option>
+                      <option value="bri">BRI</option>
+                      <option value="bsi">BSI</option>
+                    </optgroup>
+                    <optgroup label="E-Wallet">
+                      <option value="gopay">GoPay</option>
+                      <option value="ovo">OVO</option>
+                      <option value="dana">Dana</option>
+                      <option value="linkaja">LinkAja</option>
+                      <option value="shopeepay">ShopeePay</option>
+                      <option value="qris">QRIS</option>
+                    </optgroup>
+                    <option value="lainnya">Lainnya</option>
                   </select>
                   <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
