@@ -98,7 +98,7 @@ Mohon dibantu proses selanjutnya. Terima kasih.`;
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-[2.5rem] clean-shadow border border-slate-100"
+          className="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-[2.5rem] clean-shadow border-2 border-slate-100 shadow-2xl shadow-navy/5"
         >
           <form onSubmit={handleSubmit} className="space-y-8">
             
@@ -201,6 +201,9 @@ Mohon dibantu proses selanjutnya. Terima kasih.`;
                       <option value="bni">BNI</option>
                       <option value="bri">BRI</option>
                       <option value="bsi">BSI</option>
+                      <option value="cimb">CIMB Niaga</option>
+                      <option value="permata">Permata Bank</option>
+                      <option value="danamon">Bank Danamon</option>
                     </optgroup>
                     <optgroup label="E-Wallet">
                       <option value="gopay">GoPay</option>
@@ -208,6 +211,8 @@ Mohon dibantu proses selanjutnya. Terima kasih.`;
                       <option value="dana">Dana</option>
                       <option value="linkaja">LinkAja</option>
                       <option value="shopeepay">ShopeePay</option>
+                      <option value="astrapay">AstraPay</option>
+                      <option value="isaku">iSaku</option>
                       <option value="qris">QRIS</option>
                     </optgroup>
                     <option value="lainnya">Lainnya</option>
