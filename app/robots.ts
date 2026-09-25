@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://www.domainanda.com/sitemap.xml', // Ganti dengan domain asli
+    sitemap: 'https://www.indofrozenfood.web.id/sitemap.xml',
   }
 }

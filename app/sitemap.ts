@@ -1,8 +1,8 @@
 import type { MetadataRoute } from 'next'
  
 export default function sitemap(): MetadataRoute.Sitemap {
-  // URL dasar website Anda (Ganti dengan domain asli)
-  const baseUrl = 'https://www.domainanda.com'
+  // URL dasar website Anda
+  const baseUrl = 'https://www.indofrozenfood.web.id'
 
   return [
     {

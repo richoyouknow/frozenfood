@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "www.indofrozenfood.web.id", // Ganti dengan domain asli
+    url: "https://www.indofrozenfood.web.id",
     title: "Kemitraan Usaha & Grosir Frozen Food Terlengkap",
     description: "Gabung kemitraan agen dan reseller frozen food dari rumah. Tersedia aneka sosis, nugget, dimsum, dan bakso dengan untung besar.",
     siteName: "Frozen Food Kemitraan",
