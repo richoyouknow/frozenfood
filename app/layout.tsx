@@ -13,8 +13,41 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Frozen Food Kemitraan",
-  description: "Peluang usaha frozen food dari rumah.",
+  title: {
+    default: "Kemitraan Usaha Frozen Food | Agen & Reseller Terbaik",
+    template: "%s | Frozen Food Kemitraan",
+  },
+  description: "Pusat kemitraan dan agen frozen food terlengkap. Jual sosis, nugget, dimsum, bakso, kentang goreng, kebab, dan aneka makanan beku lainnya. Peluang usaha dari rumah dengan modal kecil, margin besar!",
+  keywords: [
+    "frozen food", "kemitraan", "usaha dari rumah", "agen frozen food", "reseller frozen food", 
+    "bisnis modal kecil", "franchise frozen food", "jual sosis", "grosir sosis", "nugget ayam", 
+    "agen dimsum", "bakso sapi", "kentang goreng beku", "makanan beku murah", "supplier frozen food"
+  ],
+  authors: [{ name: "Frozen Food Kemitraan" }],
+  creator: "Frozen Food Kemitraan",
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: "https://www.domainanda.com", // Ganti dengan domain asli
+    title: "Kemitraan Usaha & Grosir Frozen Food Terlengkap",
+    description: "Gabung kemitraan agen dan reseller frozen food dari rumah. Tersedia aneka sosis, nugget, dimsum, dan bakso dengan untung besar.",
+    siteName: "Frozen Food Kemitraan",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // Tambahkan kode verifikasi Google Search Console di sini nanti
+    google: "isi_dengan_kode_verifikasi_google_search_console",
+  },
 };
 
 export default function RootLayout({
