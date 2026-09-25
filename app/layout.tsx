@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://www.domainanda.com", // Ganti dengan domain asli
+    url: "www.indofrozenfood.web.id", // Ganti dengan domain asli
     title: "Kemitraan Usaha & Grosir Frozen Food Terlengkap",
     description: "Gabung kemitraan agen dan reseller frozen food dari rumah. Tersedia aneka sosis, nugget, dimsum, dan bakso dengan untung besar.",
     siteName: "Frozen Food Kemitraan",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
   verification: {
     // Tambahkan kode verifikasi Google Search Console di sini nanti
-    google: "isi_dengan_kode_verifikasi_google_search_console",
+    google: "google-site-verification=SLBORc4St9czcCUm0wUJyzEqGkTgVVuyuYiyHqCROH0",
   },
 };
 
