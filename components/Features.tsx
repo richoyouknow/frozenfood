@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 
 export default function Features() {
   const features = [
@@ -80,9 +81,11 @@ export default function Features() {
             className="relative"
           >
             <div className="rounded-[2.5rem] overflow-hidden clean-shadow border-8 border-white">
-              <img 
+              <Image 
                 src="/hero/IMG_8524.PNG" 
                 alt="Kenapa Harus Gabung Indo Frozen Food" 
+                width={800}
+                height={800}
                 className="w-full h-auto shadow-2xl"
               />
             </div>

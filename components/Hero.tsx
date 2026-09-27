@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -10,10 +11,12 @@ export default function Hero() {
       
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
+        <Image 
           src="/pricing/IMG_8547.PNG" 
           alt="Indo Frozen Food Background" 
-          className="w-full h-full object-cover object-center opacity-40"
+          fill
+          priority
+          className="object-cover object-center opacity-40"
         />
         {/* Gradient Overlay for Text Readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent"></div>

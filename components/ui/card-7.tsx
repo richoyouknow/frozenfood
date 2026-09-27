@@ -2,6 +2,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 // Define the props for the TravelCard component
 interface TravelCardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -46,10 +47,11 @@ const TravelCard = React.forwardRef<HTMLDivElement, TravelCardProps>(
         {...props}
       >
         {/* Background Image with Zoom Effect on Hover */}
-        <img
+        <Image
           src={imageUrl}
           alt={imageAlt}
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
+          fill
+          className="object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
         />
 
         {/* Stronger Gradient Overlay at the Bottom for Readability */}

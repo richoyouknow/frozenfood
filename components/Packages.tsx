@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { TravelCard } from "@/components/ui/card-7";
 import { X, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export default function Packages({ onSelectPackage }: { onSelectPackage?: (id: string) => void }) {
@@ -180,11 +181,14 @@ export default function Packages({ onSelectPackage }: { onSelectPackage?: (id: s
             >
               {/* Image Section */}
               <div className="w-full md:w-1/2 h-[400px] md:h-auto bg-slate-900 overflow-hidden flex items-center justify-center p-4">
-                <img 
-                  src={selectedPackage.imageUrl} 
-                  alt={selectedPackage.name}
-                  className="w-full h-full object-contain"
-                />
+                <div className="relative w-full h-full">
+                  <Image 
+                    src={selectedPackage.imageUrl} 
+                    alt={selectedPackage.name}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
               </div>
 
               {/* Info Section */}

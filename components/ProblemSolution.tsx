@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function ProblemSolution() {
   return (
@@ -44,9 +45,11 @@ export default function ProblemSolution() {
             className="relative"
           >
             <div className="rounded-[2.5rem] overflow-hidden clean-shadow border-8 border-white">
-              <img 
+              <Image 
                 src="/hero/IMG_8534.PNG" 
                 alt="Masalah dan Solusi Bisnis" 
+                width={800}
+                height={800}
                 className="w-full h-auto"
               />
             </div>

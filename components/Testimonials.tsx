@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Quote, ArrowRight, Star, ArrowUpRight, Users } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Testimonials() {
@@ -141,9 +142,11 @@ export default function Testimonials() {
                 transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
               }}
             >
-              <img 
+              <Image 
                 src="/hero/testimoni.PNG" 
                 alt="Testimoni Mitra Indo Frozen Food" 
+                width={800}
+                height={800}
                 className="w-full h-auto transition-transform duration-1000"
                 style={{
                   transform: isHovered ? "scale(1.03)" : "scale(1)",
