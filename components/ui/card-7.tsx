@@ -40,7 +40,7 @@ const TravelCard = React.forwardRef<HTMLDivElement, TravelCardProps>(
       <div
         ref={ref}
         className={cn(
-          "group relative w-full h-[320px] sm:h-[750px] overflow-hidden rounded-[1.5rem] sm:rounded-[2.5rem] border border-border bg-card shadow-lg",
+          "group relative w-full h-[480px] sm:h-[750px] overflow-hidden rounded-[1.5rem] sm:rounded-[2.5rem] border border-border bg-card shadow-lg",
           "transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-1 sm:hover:-translate-y-2",
           className
         )}

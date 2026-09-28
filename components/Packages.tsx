@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 
 export default function Packages({ onSelectPackage }: { onSelectPackage?: (id: string) => void }) {
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
+  const [expandedImage, setExpandedImage] = useState<string | null>(null);
 
   const packages = [
     {
@@ -126,7 +127,7 @@ export default function Packages({ onSelectPackage }: { onSelectPackage?: (id: s
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-10 max-w-6xl mx-auto">
           {packages.map((pkg, index) => (
             <motion.div
               key={index}
@@ -180,14 +181,22 @@ export default function Packages({ onSelectPackage }: { onSelectPackage?: (id: s
               className="relative bg-white w-full max-w-5xl max-h-[90vh] overflow-hidden rounded-[3rem] shadow-2xl flex flex-col md:flex-row"
             >
               {/* Image Section */}
-              <div className="w-full md:w-1/2 h-[400px] md:h-auto bg-slate-900 overflow-hidden flex items-center justify-center p-4">
-                <div className="relative w-full h-full">
+              <div 
+                className="w-full md:w-1/2 h-[400px] md:h-auto bg-slate-900 overflow-hidden flex items-center justify-center p-4 cursor-pointer group"
+                onClick={() => setExpandedImage(selectedPackage.imageUrl)}
+              >
+                <div className="relative w-full h-full transition-transform duration-500 group-hover:scale-105">
                   <Image 
                     src={selectedPackage.imageUrl} 
                     alt={selectedPackage.name}
                     fill
                     className="object-contain"
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <span className="text-white font-medium px-4 py-2 bg-black/50 backdrop-blur-sm rounded-full text-sm border border-white/20">
+                      Klik untuk perbesar gambar
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -242,6 +251,43 @@ export default function Packages({ onSelectPackage }: { onSelectPackage?: (id: s
                   >
                     Tutup
                   </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+      {/* Image Lightbox Modal */}
+      <AnimatePresence>
+        {expandedImage && (
+          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-10">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setExpandedImage(null)}
+              className="absolute inset-0 bg-black/95 backdrop-blur-sm cursor-pointer"
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="relative w-full h-full flex items-center justify-center pointer-events-none"
+            >
+              <div className="relative w-full max-w-6xl h-full pointer-events-auto flex items-center justify-center">
+                <button 
+                  onClick={() => setExpandedImage(null)}
+                  className="absolute top-2 right-2 md:top-4 md:right-4 z-10 p-3 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 rounded-full transition-all backdrop-blur-md"
+                >
+                  <X size={24} />
+                </button>
+                <div className="relative w-full h-full max-h-[90vh]">
+                  <Image 
+                    src={expandedImage} 
+                    alt="Expanded view"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </div>
             </motion.div>
