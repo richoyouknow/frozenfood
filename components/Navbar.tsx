@@ -37,7 +37,7 @@ export default function Navbar() {
         <Link href="#" className="flex items-center gap-3 group">
           <div className="h-12 w-12 overflow-hidden rounded-xl flex items-center justify-center bg-white shadow-sm border border-slate-100 group-hover:border-primary/20 transition-colors duration-500">
             <img 
-              src="/logo/IMG_8448.PNG" 
+              src="/favicon.ico" 
               alt="Indo Frozen Food Logo" 
               className="h-full w-full object-cover scale-110 transition-transform duration-500 group-hover:scale-125"
             />
