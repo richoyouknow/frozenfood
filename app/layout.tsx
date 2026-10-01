@@ -32,6 +32,20 @@ export const metadata: Metadata = {
     title: "Kemitraan Usaha & Grosir Frozen Food Terlengkap",
     description: "Gabung kemitraan agen dan reseller frozen food dari rumah. Tersedia aneka sosis, nugget, dimsum, dan bakso dengan untung besar.",
     siteName: "Frozen Food Kemitraan",
+    images: [
+      {
+        url: "/og-image.PNG", // Gambar yang akan muncul (letakkan di folder public/)
+        width: 1200,
+        height: 630,
+        alt: "Frozen Food Kemitraan",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kemitraan Usaha & Grosir Frozen Food Terlengkap",
+    description: "Gabung kemitraan agen dan reseller frozen food dari rumah. Tersedia aneka sosis, nugget, dimsum, dan bakso dengan untung besar.",
+    images: ["/og-image.PNG"],
   },
   robots: {
     index: true,
